@@ -38,6 +38,7 @@ test: generate fmt vet manifests
 # Build manager binary
 manager: generate fmt vet
 	go build -o bin/manager ./cmd/manager/main.go
+	go test -c 
 
 # Run against the configured Kubernetes cluster in ~/.kube/config
 run: install install-rbac
@@ -132,7 +133,7 @@ generate: controller-gen
 
 # Build and push the operator image
 operator-image:
-	python pipeline.py --image-name operator-ubi
+	python3 pipeline.py --image-name operator-ubi
 
 # Build and push e2e test image
 e2e-image:

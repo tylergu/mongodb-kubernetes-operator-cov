@@ -49,7 +49,7 @@ func hasRequiredVariables(logger *zap.Logger, envVariables ...string) bool {
 	return allPresent
 }
 
-func main() {
+func run() {
 	log, err := configureLogger()
 	if err != nil {
 		log.Sugar().Fatalf("Failed to configure logger: %v", err)
@@ -107,4 +107,9 @@ func main() {
 	if err := mgr.Start(signals.SetupSignalHandler()); err != nil {
 		log.Sugar().Fatalf("Unable to start manager: %v", err)
 	}
+	log.Info("Terminating gracefully.")
+}
+
+func main() {
+	run()
 }

@@ -10,4 +10,4 @@ if ! whoami >/dev/null 2>&1; then
 fi
 
 echo "Running ./${OPERATOR}"
-"./${OPERATOR}" "$@"
+GOCOVERDIR=/tmp/profile exec "./${OPERATOR}" -test.coverprofile=/tmp/profile/cass-operator-`date +%s%N`.out

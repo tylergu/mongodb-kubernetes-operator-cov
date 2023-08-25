@@ -18,7 +18,7 @@ VALID_IMAGE_NAMES = frozenset(
     ]
 )
 
-GOLANG_TAG = "1.17"
+GOLANG_TAG = "1.21"
 DEFAULT_IMAGE_TYPE = "ubuntu"
 DEFAULT_NAMESPACE = "default"
 
@@ -112,7 +112,7 @@ def build_operator_ubi_image(config: DevConfig) -> None:
             "registry": config.repo_url,
             "builder": "true",
             "builder_image": f"golang:{GOLANG_TAG}",
-            "base_image": "registry.access.redhat.com/ubi8/ubi-minimal:latest",
+            "base_image": "alpine:latest",
             "operator_image": config.operator_image,
             "operator_image_dev": config.operator_image_dev,
             "release_version": release["mongodb-kubernetes-operator"],
